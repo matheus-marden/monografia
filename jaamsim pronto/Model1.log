@@ -1,0 +1,1116 @@
+
+RecordEdits
+
+Define Branch { Branch1  Branch2  Branch3  Branch4  Branch5  Branch6  Branch7 }
+Define EntityContainer { EntityContainer1  EntityContainer2  EntityContainer3 }
+Define EntityConveyor { EntityConveyor1  EntityConveyor2  EntityConveyor3  EntityConveyor4  EntityConveyor5  EntityConveyor6  EntityConveyor7  EntityConveyor8 }
+Define EntityGenerator { EntityGenerator1  EntityGenerator2  EntityGenerator3  EntityGenerator4  EntityGenerator5  EntityGenerator6  EntityGenerator7  EntityGenerator8 }
+Define EntityProcessor { Calandra1  Calandra2  Dobragem  Empacotamento  FerroDePassar1  FerroDePassar2  LavadoraHospitalar1  LavadoraHospitalar2  LavadoraIndustrial1  LavadoraIndustrial2  PreDobragem  Secadora1  Secadora2  Secadora3  Separador  SeparadorHot  Transicoes }
+Define EntitySink { EntitySink1 }
+Define Pack { Pack1  Pack2  Pack3  Pack4  Pack5  Pack6  Pack7  Pack8  Pack9  Pack10  Pack11  Pack12  fronhapack  hospfelpack  hosppacklencolpack  hspcirpack  hspfropack  lencol  packlehosp1  packlehosp1_Copy1  packlehosp1_Copy2  packlehosp1_Copy3  pisopack  toalhapack }
+Define Queue { Queue1  Queue2  Queue3  Queue4  Queue5  Queue6  Queue7  Queue8  Queue9  Queue10  Queue11  Queue12  Queue13  Queue14  Queue15  Queue16  Queue17  Queue18  Queue19  Queue20  Queue21  Queue22  Queue23  Queue24  Queue25  Queue26  Queue27  Queue28  Queue29  Queue30  Queue31  Queue32  Queue33  Queue34  Queue35  Queue36  Queue37  queue20  queue21 }
+Define SimEntity { LencolHosp  Lencolhot  cirurgico  felpudos  fronhaHosp  fronhahot  pisorosto  toalha }
+Define Unpack { Unpack1  Unpack2  Unpack3  Unpack4 }
+Define Resource { Funcionario_area_contaminda  funcionario_geral }
+Define ColladaModel { Axis  Grid100x100  lençol-model }
+Define ImageModel { foto_colocar_jaamsim-model  foto_colocar_jaamsim1-model  imagem_jaamsim_atualizada-model  sh_adaptacao_2d_def-model }
+Define DisplayEntity { DisplayEntity3  XY-Grid  XYZ-Axis  sh_adaptacao_2d_def }
+Define EntityLabel { Branch1_Label  Branch3_Label  Branch4_Label  Branch5_Label  Calandra1_Label  DisplayEntity3_Label  Empacotamento_Label  EntityContainer1_Label  EntityContainer2_Label  EntityContainer3_Label  FerroDePassar1_Label  LavadoraIndustrial2_Label  LencolHosp_Label  Lencolhot_Label  Pack1_Label  PreDobragem_Label  Queue13_Label  Queue14_Label  Queue37_Label  Secadora1_Label  Transicoes_Label  Unpack1_Label  cirurgico_Label  felpudos_Label  fronhaHosp_Label  fronhahot_Label  hosppacklencolpack_Label  hspfropack_Label  lencol_Label  pisorosto_Label  toalha_Label }
+Define OverlayClock { Clock }
+Define View { View1  View2 }
+
+LencolHosp AttributeDefinitionList { { type  1 } }
+Lencolhot AttributeDefinitionList { { type  5 } }
+cirurgico AttributeDefinitionList { { type  4 } }
+felpudos AttributeDefinitionList { { type  3 } }
+fronhaHosp AttributeDefinitionList { { type  2 } }
+fronhahot AttributeDefinitionList { { type  6 } }
+pisorosto AttributeDefinitionList { { type  8 } }
+toalha AttributeDefinitionList { { type  7 } }
+
+Simulation Description { 'Simulation run control inputs' }
+Simulation RunDuration { 84  h }
+Simulation NumberOfReplications { 1 }
+
+# *** Branch ***
+
+Branch1 NextComponentList { Queue2  Queue3  Queue4  Queue5 }
+Branch1 Choice { 'this.obj.type == 1 ? 1 : this.obj.type == 2 ? 2 : this.obj.type == 3 ? 3: 4' }
+
+Branch2 NextComponentList { Queue8  Queue9  Queue10  Queue11 }
+Branch2 Choice { 'this.obj.type == 5 ? 1 : this.obj.type == 6 ? 2 : this.obj.type == 7 ? 3: 4' }
+
+Branch3 NextComponentList { Queue15  EntityConveyor6  EntityConveyor8 }
+Branch3 Choice { 'this.obj.type == 1 ? 1 : this.obj.type == 2 ? 1 : this.obj.type == 5 ? 1 : this.obj.type == 6 ? 1 : this.obj.type == 4 ? 3 : 2 ' }
+
+Branch4 NextComponentList { Queue19  queue20  queue21  Queue22  Queue20  Queue33  Queue34  Queue35 }
+Branch4 Choice { 'this.obj.type == 5 ? 1 : this.obj.type == 6 ? 2 : this.obj.type == 7 ? 3 : this.obj.type == 8 ? 4 : this.obj.type == 1? 5 : this.obj.type == 2 ? 6 : this.obj.type == 3 ? 7 : 8 ' }
+
+Branch5 NextComponentList { Queue21  Queue23  Queue24  Queue25 }
+Branch5 Choice { 'this.obj.type == 5 ? 1 : this.obj.type == 6 ? 2 : this.obj.type == 7 ? 3: 4' }
+
+Branch6 NextComponentList { Queue26  Queue27 }
+Branch6 Choice { 'this.obj.type == 1? 1 : this.obj.type == 2? 1 : this.obj.type == 4 ? 1 : this.obj.type == 5? 1 : this.obj.type == 6? 1 : 2' }
+
+Branch7 NextComponentList { Queue28  Queue29 }
+Branch7 Choice { 'this.obj.type == 1? 1 : this.obj.type == 2? 1 : this.obj.type == 4 ? 1 : this.obj.type == 5? 1 : this.obj.type == 6? 1 : 2' }
+
+# *** EntityContainer ***
+
+
+
+
+# *** EntityConveyor ***
+
+EntityConveyor1 NextComponent { Queue12 }
+
+EntityConveyor2 NextComponent { Queue6 }
+
+EntityConveyor3 NextComponent { Queue14 }
+EntityConveyor3 TravelTime { 150  s }
+
+EntityConveyor4 NextComponent { Queue31 }
+EntityConveyor4 TravelTime { 215  s }
+
+EntityConveyor5 NextComponent { Queue31 }
+EntityConveyor5 TravelTime { 430  s }
+
+EntityConveyor6 NextComponent { Queue16 }
+
+EntityConveyor7 NextComponent { EntitySink1 }
+EntityConveyor7 TravelTime { 200  s }
+
+EntityConveyor8 NextComponent { Queue32 }
+
+# *** EntityGenerator ***
+
+EntityGenerator1 NextComponent { Queue1 }
+EntityGenerator1 InterArrivalTime { 3  h }
+EntityGenerator1 EntitiesPerArrival { 130 }
+EntityGenerator1 PrototypeEntity { LencolHosp }
+
+EntityGenerator2 NextComponent { Queue1 }
+EntityGenerator2 InterArrivalTime { 3  h }
+EntityGenerator2 EntitiesPerArrival { 15 }
+EntityGenerator2 PrototypeEntity { fronhaHosp }
+
+EntityGenerator3 NextComponent { Queue1 }
+EntityGenerator3 InterArrivalTime { 3  h }
+EntityGenerator3 EntitiesPerArrival { 51 }
+EntityGenerator3 PrototypeEntity { felpudos }
+
+EntityGenerator4 NextComponent { Queue1 }
+EntityGenerator4 InterArrivalTime { 3  h }
+EntityGenerator4 EntitiesPerArrival { 10 }
+EntityGenerator4 PrototypeEntity { cirurgico }
+
+EntityGenerator5 NextComponent { Queue7 }
+EntityGenerator5 InterArrivalTime { 3  h }
+EntityGenerator5 EntitiesPerArrival { 53 }
+EntityGenerator5 PrototypeEntity { Lencolhot }
+
+EntityGenerator6 NextComponent { Queue7 }
+EntityGenerator6 InterArrivalTime { 3  h }
+EntityGenerator6 EntitiesPerArrival { 3 }
+EntityGenerator6 PrototypeEntity { fronhahot }
+
+EntityGenerator7 NextComponent { Queue7 }
+EntityGenerator7 InterArrivalTime { 3  h }
+EntityGenerator7 EntitiesPerArrival { 20 }
+EntityGenerator7 PrototypeEntity { toalha }
+
+EntityGenerator8 NextComponent { Queue7 }
+EntityGenerator8 InterArrivalTime { 3  h }
+EntityGenerator8 EntitiesPerArrival { 7 }
+EntityGenerator8 PrototypeEntity { pisorosto }
+
+# *** EntityProcessor ***
+
+Calandra1 NextComponent { Queue37 }
+Calandra1 WaitQueue { Queue17 }
+Calandra1 ResourceList { funcionario_geral }
+Calandra1 NumberOfUnits { { 2 } }
+Calandra1 ServiceTime { 60  s }
+
+Calandra2 NextComponent { Queue37 }
+Calandra2 WaitQueue { Queue17 }
+Calandra2 ResourceList { funcionario_geral }
+Calandra2 ServiceTime { 180  s }
+
+Dobragem NextComponent { Queue37 }
+Dobragem WaitQueue { Queue16 }
+Dobragem ResourceList { funcionario_geral }
+Dobragem ServiceTime { 62  s }
+
+Empacotamento NextComponent { Branch4 }
+Empacotamento WaitQueue { Queue37 }
+Empacotamento ResourceList { funcionario_geral }
+Empacotamento ServiceTime { 3  s }
+
+FerroDePassar1 NextComponent { Queue37 }
+FerroDePassar1 WaitQueue { Queue32 }
+FerroDePassar1 ResourceList { funcionario_geral }
+FerroDePassar1 ServiceTime { 500  s }
+
+FerroDePassar2 NextComponent { Queue37 }
+FerroDePassar2 WaitQueue { Queue32 }
+FerroDePassar2 ResourceList { funcionario_geral }
+FerroDePassar2 ServiceTime { 500  s }
+
+LavadoraHospitalar1 NextComponent { EntityConveyor5 }
+LavadoraHospitalar1 WaitQueue { Queue6 }
+LavadoraHospitalar1 ServiceTime { 1  h }
+
+LavadoraHospitalar2 NextComponent { EntityConveyor5 }
+LavadoraHospitalar2 WaitQueue { Queue6 }
+LavadoraHospitalar2 ServiceTime { 1  h }
+
+LavadoraIndustrial1 NextComponent { EntityConveyor4 }
+LavadoraIndustrial1 WaitQueue { Queue18 }
+LavadoraIndustrial1 Capacity { 2 }
+LavadoraIndustrial1 ServiceTime { 1  h }
+
+LavadoraIndustrial2 NextComponent { EntityConveyor4 }
+LavadoraIndustrial2 WaitQueue { Queue12 }
+LavadoraIndustrial2 ServiceTime { 1  h }
+
+PreDobragem NextComponent { Queue17 }
+PreDobragem WaitQueue { Queue15 }
+PreDobragem ResourceList { funcionario_geral }
+PreDobragem NumberOfUnits { { 1 } }
+PreDobragem Capacity { 2 }
+PreDobragem ServiceTime { 37.5  s }
+
+Secadora1 NextComponent { EntityConveyor3 }
+Secadora1 WaitQueue { Queue30 }
+Secadora1 Capacity { 1 }
+Secadora1 ServiceTime { 40  min }
+
+Secadora2 NextComponent { EntityConveyor3 }
+Secadora2 WaitQueue { Queue13 }
+Secadora2 ServiceTime { 30  min }
+
+Secadora3 NextComponent { EntityConveyor3 }
+Secadora3 WaitQueue { Queue13 }
+Secadora3 ServiceTime { 30  min }
+
+Separador NextComponent { Branch1 }
+Separador WaitQueue { Queue1 }
+Separador ResourceList { Funcionario_area_contaminda }
+Separador Capacity { 2 }
+Separador ServiceTime { 34  s }
+
+SeparadorHot NextComponent { Branch2 }
+SeparadorHot WaitQueue { Queue7 }
+SeparadorHot ResourceList { funcionario_geral }
+SeparadorHot ServiceTime { 34  s }
+
+Transicoes NextComponent { Branch3 }
+Transicoes WaitQueue { Queue36 }
+Transicoes ResourceList { funcionario_geral }
+Transicoes ServiceTime { 11.76  s }
+
+# *** EntitySink ***
+
+
+# *** Pack ***
+
+Pack1 NextComponent { EntityConveyor1 }
+Pack1 WaitQueue { Queue8 }
+Pack1 NumberOfEntities { 30 }
+Pack1 PrototypeEntityContainer { EntityContainer1 }
+
+Pack2 NextComponent { EntityConveyor1 }
+Pack2 WaitQueue { Queue9 }
+Pack2 NumberOfEntities { 30 }
+Pack2 PrototypeEntityContainer { EntityContainer1 }
+
+Pack3 NextComponent { EntityConveyor1 }
+Pack3 WaitQueue { Queue10 }
+Pack3 NumberOfEntities { 30 }
+Pack3 PrototypeEntityContainer { EntityContainer1 }
+
+Pack4 NextComponent { EntityConveyor1 }
+Pack4 WaitQueue { Queue11 }
+Pack4 NumberOfEntities { 30 }
+Pack4 PrototypeEntityContainer { EntityContainer1 }
+
+Pack5 NextComponent { Queue18 }
+Pack5 WaitQueue { Queue23 }
+Pack5 NumberOfEntities { 60 }
+Pack5 PrototypeEntityContainer { EntityContainer1 }
+
+Pack6 NextComponent { Queue18 }
+Pack6 WaitQueue { Queue21 }
+Pack6 NumberOfEntities { 60 }
+Pack6 PrototypeEntityContainer { EntityContainer1 }
+
+Pack7 NextComponent { Queue18 }
+Pack7 WaitQueue { Queue24 }
+Pack7 NumberOfEntities { 60 }
+Pack7 PrototypeEntityContainer { EntityContainer1 }
+
+Pack8 NextComponent { Queue18 }
+Pack8 WaitQueue { Queue25 }
+Pack8 NumberOfEntities { 60 }
+Pack8 PrototypeEntityContainer { EntityContainer1 }
+
+Pack9 NextComponent { Queue13 }
+Pack9 WaitQueue { Queue26 }
+Pack9 NumberOfEntities { 30 }
+Pack9 PrototypeEntityContainer { EntityContainer2 }
+
+Pack10 NextComponent { Queue13 }
+Pack10 WaitQueue { Queue27 }
+Pack10 NumberOfEntities { 30 }
+Pack10 PrototypeEntityContainer { EntityContainer2 }
+
+Pack11 NextComponent { Queue30 }
+Pack11 WaitQueue { Queue28 }
+Pack11 NumberOfEntities { 90 }
+Pack11 PrototypeEntityContainer { EntityContainer2 }
+
+Pack12 NextComponent { Queue30 }
+Pack12 WaitQueue { Queue29 }
+Pack12 NumberOfEntities { 90 }
+Pack12 PrototypeEntityContainer { EntityContainer2 }
+
+fronhapack NextComponent { EntityConveyor7 }
+fronhapack WaitQueue { queue20 }
+fronhapack NumberOfEntities { 11 }
+fronhapack ServiceTime { 3  s }
+fronhapack PrototypeEntityContainer { EntityContainer3 }
+
+hospfelpack NextComponent { EntityConveyor7 }
+hospfelpack WaitQueue { Queue34 }
+hospfelpack NumberOfEntities { 6 }
+hospfelpack PrototypeEntityContainer { EntityContainer3 }
+
+hosppacklencolpack NextComponent { EntityConveyor7 }
+hosppacklencolpack WaitQueue { Queue20 }
+hosppacklencolpack NumberOfEntities { 12 }
+hosppacklencolpack PrototypeEntityContainer { EntityContainer3 }
+
+hspcirpack NextComponent { EntityConveyor7 }
+hspcirpack WaitQueue { Queue35 }
+hspcirpack NumberOfEntities { 5 }
+hspcirpack PrototypeEntityContainer { EntityContainer3 }
+
+hspfropack NextComponent { EntityConveyor7 }
+hspfropack WaitQueue { Queue33 }
+hspfropack NumberOfEntities { 11 }
+hspfropack PrototypeEntityContainer { EntityContainer3 }
+
+lencol NextComponent { EntityConveyor7 }
+lencol WaitQueue { Queue19 }
+lencol NumberOfEntities { 12 }
+lencol ServiceTime { 3  s }
+lencol PrototypeEntityContainer { EntityContainer3 }
+
+packlehosp1 NextComponent { EntityConveyor2 }
+packlehosp1 WaitQueue { Queue2 }
+packlehosp1 NumberOfEntities { 60 }
+packlehosp1 PrototypeEntityContainer { EntityContainer1 }
+
+packlehosp1_Copy1 NextComponent { EntityConveyor2 }
+packlehosp1_Copy1 WaitQueue { Queue3 }
+packlehosp1_Copy1 NumberOfEntities { 60 }
+packlehosp1_Copy1 PrototypeEntityContainer { EntityContainer1 }
+
+packlehosp1_Copy2 NextComponent { EntityConveyor2 }
+packlehosp1_Copy2 WaitQueue { Queue4 }
+packlehosp1_Copy2 NumberOfEntities { 60 }
+packlehosp1_Copy2 PrototypeEntityContainer { EntityContainer1 }
+
+packlehosp1_Copy3 NextComponent { EntityConveyor2 }
+packlehosp1_Copy3 WaitQueue { Queue5 }
+packlehosp1_Copy3 NumberOfEntities { 60 }
+packlehosp1_Copy3 PrototypeEntityContainer { EntityContainer1 }
+
+pisopack NextComponent { EntityConveyor7 }
+pisopack WaitQueue { Queue22 }
+pisopack NumberOfEntities { 8 }
+pisopack ServiceTime { 3  s }
+pisopack PrototypeEntityContainer { EntityContainer3 }
+
+toalhapack NextComponent { EntityConveyor7 }
+toalhapack WaitQueue { queue21 }
+toalhapack NumberOfEntities { 6 }
+toalhapack ServiceTime { 3  s }
+toalhapack PrototypeEntityContainer { EntityContainer3 }
+
+# *** Queue ***
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# *** SimEntity ***
+
+
+
+
+
+
+
+
+
+# *** Unpack ***
+
+Unpack1 NextComponent { Queue36 }
+Unpack1 WaitQueue { Queue14 }
+
+Unpack2 NextComponent { Branch5 }
+Unpack2 WaitQueue { Queue12 }
+
+Unpack3 NextComponent { Branch6 }
+Unpack3 WaitQueue { Queue31 }
+
+Unpack4 NextComponent { Branch7 }
+Unpack4 WaitQueue { Queue13 }
+
+# *** Resource ***
+
+Funcionario_area_contaminda Capacity { 2 }
+
+funcionario_geral Capacity { 12 }
+
+# *** GRAPHICS INPUTS ***
+
+Simulation RealTime { TRUE }
+Simulation SnapToGrid { TRUE }
+Simulation RealTimeFactor { 512 }
+Simulation ShowLabels { TRUE }
+Simulation ShowSubModels { TRUE }
+Simulation ShowEntityFlow { TRUE }
+Simulation ShowModelBuilder { TRUE }
+Simulation ShowObjectSelector { TRUE }
+Simulation ShowInputEditor { TRUE }
+Simulation ShowOutputViewer { TRUE }
+Simulation ShowPropertyViewer { FALSE }
+Simulation ShowLogViewer { TRUE }
+Simulation ModelBuilderPos { -2  103 }
+Simulation ModelBuilderSize { 220  313 }
+Simulation InputEditorPos { 244  513 }
+Simulation InputEditorSize { 520  208 }
+Simulation OutputViewerPos { 804  498 }
+Simulation OutputViewerSize { 420  208 }
+Simulation LogViewerPos { 766  579 }
+Simulation LogViewerSize { 520  208 }
+
+Branch1 Position { 9.3  3.5  0.0  m }
+Branch1 Size { 0.8  0.7  1.0  m }
+
+Branch2 Position { 8.4  11.1  0.0  m }
+
+Branch3 Position { 3.6  15.0  0.0  m }
+Branch3 Size { 0.6  0.7  1.0  m }
+
+Branch4 Position { 3.5  9.3  0.0  m }
+Branch4 Size { 0.7  0.7  1.0  m }
+
+Branch5 Position { 5.1  14.8  0.0  m }
+Branch5 Size { 0.7  0.7  1.0  m }
+
+Branch6 Position { 2.1  15.8  0.0  m }
+Branch6 Size { 0.4  0.6  1.0  m }
+
+Branch7 Position { 1.7  12.7  0.0  m }
+Branch7 Size { 0.3  0.4  1.0  m }
+
+EntityContainer1 Position { 11.8  3.7  0.0  m }
+EntityContainer1 Size { 0.6  0.5  1.0  m }
+EntityContainer1 MaxPerLine { 1 }
+EntityContainer1 MaxRows { 2 }
+
+EntityContainer2 Position { -1.1  15.2  0.0  m }
+EntityContainer2 Size { 0.4  0.6  1.0  m }
+EntityContainer2 MaxPerLine { 1 }
+EntityContainer2 MaxRows { 3 }
+
+EntityContainer3 Position { -1.4  8.7  0.0  m }
+EntityContainer3 Size { 0.4  0.4  1.0  m }
+EntityContainer3 MaxPerLine { 1 }
+EntityContainer3 MaxRows { 1 }
+
+EntityConveyor1 Points { { 8.0  13.6  0.0  m } { 6.6  15.2  0.0  m } }
+
+EntityConveyor2 Points { { 9.1  5.6  0.0  m } { 8.8  6.0  0.0  m } }
+
+EntityConveyor3 Points { { 1.2  15.1  0.0  m } { 2.5  15.1  0.0  m } }
+
+EntityConveyor4 Points { { 3.1  16.7  0.0  m } { 2.2  16.7  0.0  m } }
+
+EntityConveyor5 Points { { 6.6  8.6  0.0  m } { 5.1  16.2  0.0  m } }
+
+EntityConveyor6 Points { { 1.5  13.3  0.0  m } { 1.6  9.8  0.0  m } }
+
+EntityConveyor7 Points { { 2.6  6.9  0.0  m } { 2.6  5.7  0.0  m } }
+
+EntityConveyor8 Points { { 2.8  14.8  0.0  m } { 0.9  9.5  0.0  m } }
+
+EntityGenerator1 Position { 7.0  0.8  0.0  m }
+EntityGenerator1 Size { 0.6  0.5  1.0  m }
+
+EntityGenerator2 Position { 7.9  0.8  0.0  m }
+EntityGenerator2 Size { 0.6  0.5  1.0  m }
+
+EntityGenerator3 Position { 8.7  0.7  0.0  m }
+EntityGenerator3 Size { 0.6  0.5  1.0  m }
+
+EntityGenerator4 Position { 9.5  0.8  0.0  m }
+EntityGenerator4 Size { 0.6  0.5  1.0  m }
+
+EntityGenerator5 Position { 10.8  12.8  0.0  m }
+EntityGenerator5 Size { 0.6  0.6  1.0  m }
+
+EntityGenerator6 Position { 10.8  12.1  0.0  m }
+EntityGenerator6 Size { 0.6  0.6  1.0  m }
+
+EntityGenerator7 Position { 10.7  11.6  0.0  m }
+EntityGenerator7 Size { 0.6  0.6  1.0  m }
+
+EntityGenerator8 Position { 10.4  11.0  0.0  m }
+EntityGenerator8 Size { 0.6  0.6  1.0  m }
+
+Calandra1 Position { 3.6  12.1  0.0  m }
+Calandra1 Size { 1.5  1.9  1.0  m }
+
+Calandra2 Position { 0.2  11.3  0.0  m }
+
+Dobragem Position { 5.0  8.6  0.0  m }
+
+Empacotamento Position { 4.1  9.1  0.0  m }
+Empacotamento Size { 0.5  0.6  1.0  m }
+
+FerroDePassar1 Position { 0.8  9.1  0.0  m }
+FerroDePassar1 Size { 0.8  0.8  1.0  m }
+
+FerroDePassar2 Position { 0.5  8.0  0.0  m }
+FerroDePassar2 Size { 0.8  0.8  1.0  m }
+
+LavadoraHospitalar1 Position { 7.8  7.1  0.0  m }
+
+LavadoraHospitalar2 Position { 10.6  7.3  0.0  m }
+
+LavadoraIndustrial1 Position { 4.3  17.2  0.0  m }
+LavadoraIndustrial1 Size { 1.7  1.5  1.0  m }
+
+LavadoraIndustrial2 Position { 5.7  17.1  0.0  m }
+LavadoraIndustrial2 Size { 1.7  1.5  1.0  m }
+
+PreDobragem Position { 3.6  14.4  0.0  m }
+
+Secadora1 Position { 0.8  14.3  0.0  m }
+Secadora1 Size { 1.2  1.4  1.0  m }
+
+Secadora2 Position { 0.9  16.0  0.0  m }
+Secadora2 Size { 1.2  1.4  1.0  m }
+
+Secadora3 Position { 0.6  17.4  0.0  m }
+Secadora3 Size { 1.2  1.4  1.0  m }
+
+Separador Position { 7.9  3.6  0.0  m }
+
+SeparadorHot Position { 9.3  11.5  0.0  m }
+
+Transicoes Position { 3.2  15.3  0.0  m }
+Transicoes Size { 0.5  0.6  1.0  m }
+
+EntitySink1 Position { 2.1  4.5  0.0  m }
+
+Pack1 Position { 7.5  12.3  0.0  m }
+Pack1 Size { 0.7  0.8  1.0  m }
+
+Pack2 Position { 8.4  12.3  0.0  m }
+Pack2 Size { 0.7  0.8  1.0  m }
+
+Pack3 Position { 9.0  12.4  0.0  m }
+Pack3 Size { 0.7  0.8  1.0  m }
+
+Pack4 Position { 9.7  12.4  0.0  m }
+Pack4 Size { 0.7  0.8  1.0  m }
+
+Pack5 Position { 4.1  16.1  0.0  m }
+Pack5 Size { 0.5  0.5  1.0  m }
+
+Pack6 Position { 3.7  16.1  0.0  m }
+Pack6 Size { 0.6  0.7  1.0  m }
+
+Pack7 Position { 4.4  16.0  0.0  m }
+Pack7 Size { 0.5  0.5  1.0  m }
+
+Pack8 Position { 4.8  16.0  0.0  m }
+Pack8 Size { 0.5  0.5  1.0  m }
+
+Pack9 Position { 1.5  15.9  0.0  m }
+Pack9 Size { 0.3  0.4  1.0  m }
+
+Pack10 Position { 1.8  16.0  0.0  m }
+Pack10 Size { 0.3  0.4  1.0  m }
+
+Pack11 Position { 1.4  14.5  0.0  m }
+Pack11 Size { 0.3  0.3  1.0  m }
+
+Pack12 Position { 2.2  14.3  0.0  m }
+Pack12 Size { 0.3  0.3  1.0  m }
+
+fronhapack Position { 3.5  8.8  0.0  m }
+fronhapack Size { 0.8  0.7  1.0  m }
+
+hospfelpack Position { 3.7  8.6  0.0  m }
+hospfelpack Size { 0.5  0.5  1.0  m }
+
+hosppacklencolpack Position { 2.7  8.8  0.0  m }
+hosppacklencolpack Size { 0.8  0.8  1.0  m }
+
+hspcirpack Position { 4.5  8.6  0.0  m }
+hspcirpack Size { 0.5  0.5  1.0  m }
+
+hspfropack Position { 3.3  8.8  0.0  m }
+hspfropack Size { 0.5  0.5  1.0  m }
+
+lencol Position { 2.9  8.8  0.0  m }
+lencol Size { 0.8  0.7  1.0  m }
+
+packlehosp1 Position { 8.4  5.1  0.0  m }
+packlehosp1 Size { 0.7  0.7  1.0  m }
+
+packlehosp1_Copy1 Position { 9.2  5.2  0.0  m }
+packlehosp1_Copy1 Size { 0.7  0.7  1.0  m }
+
+packlehosp1_Copy2 Position { 10.0  5.2  0.0  m }
+packlehosp1_Copy2 Size { 0.7  0.7  1.0  m }
+
+packlehosp1_Copy3 Position { 10.7  5.1  0.0  m }
+packlehosp1_Copy3 Size { 0.7  0.7  1.0  m }
+
+pisopack Position { 4.5  8.8  0.0  m }
+pisopack Size { 0.8  0.7  1.0  m }
+
+toalhapack Position { 4.1  8.8  0.0  m }
+toalhapack Size { 0.8  0.7  1.0  m }
+
+Queue1 Position { 9.6  2.4  0.0  m }
+Queue1 MaxPerLine { 2 }
+Queue1 MaxRows { 2 }
+
+Queue2 Position { 9.3  4.3  0.0  m }
+Queue2 MaxPerLine { 2 }
+Queue2 MaxRows { 4 }
+
+Queue3 Position { 9.9  4.2  0.0  m }
+Queue3 MaxPerLine { 2 }
+Queue3 MaxRows { 4 }
+
+Queue4 Position { 10.4  4.2  0.0  m }
+Queue4 MaxPerLine { 2 }
+Queue4 MaxRows { 4 }
+
+Queue5 Position { 10.9  4.2  0.0  m }
+Queue5 MaxPerLine { 2 }
+Queue5 MaxRows { 4 }
+
+Queue6 Position { 8.8  6.2  0.0  m }
+Queue6 Orientation { 0.0  0.0  94.0  deg }
+
+Queue7 Position { 9.6  10.5  0.0  m }
+Queue7 MaxPerLine { 3 }
+Queue7 MaxRows { 5 }
+
+Queue8 Position { 6.4  10.7  0.0  m }
+Queue8 MaxPerLine { 1 }
+Queue8 MaxRows { 3 }
+
+Queue9 Position { 7.4  10.7  0.0  m }
+Queue9 MaxPerLine { 1 }
+Queue9 MaxRows { 3 }
+
+Queue10 Position { 8.3  10.7  0.0  m }
+Queue10 MaxPerLine { 1 }
+Queue10 MaxRows { 3 }
+
+Queue11 Position { 9.2  10.7  0.0  m }
+Queue11 MaxPerLine { 1 }
+Queue11 MaxRows { 3 }
+
+Queue12 Position { 6.3  15.8  0.0  m }
+Queue12 MaxPerLine { 1 }
+Queue12 MaxRows { 3 }
+
+Queue13 Position { 1.5  16.7  0.0  m }
+Queue13 Size { 0.2  0.3  0.0  m }
+Queue13 MaxPerLine { 6 }
+Queue13 MaxRows { 5 }
+
+Queue14 Position { 2.7  15.5  0.0  m }
+Queue14 Size { 0.3  0.4  0.0  m }
+
+Queue15 Position { 1.8  14.2  0.0  m }
+Queue15 MaxPerLine { 2 }
+Queue15 MaxRows { 3 }
+
+Queue16 Position { 5.2  9.3  0.0  m }
+Queue16 MaxPerLine { 2 }
+Queue16 MaxRows { 3 }
+
+Queue17 Position { 2.9  13.6  0.0  m }
+Queue17 MaxPerLine { 2 }
+Queue17 MaxRows { 3 }
+
+Queue18 Position { 3.6  16.6  0.0  m }
+Queue18 Size { 0.4  0.5  0.0  m }
+Queue18 MaxPerLine { 1 }
+Queue18 MaxRows { 3 }
+
+Queue19 Position { 1.6  7.7  0.0  m }
+Queue19 MaxPerLine { 2 }
+Queue19 MaxRows { 3 }
+
+Queue20 Position { 2.5  9.0  -0.0  m }
+Queue20 MaxPerLine { 2 }
+Queue20 MaxRows { 3 }
+
+Queue21 Position { 3.9  15.8  0.0  m }
+Queue21 Size { 0.4  0.4  0.0  m }
+Queue21 MaxPerLine { 1 }
+Queue21 MaxRows { 3 }
+
+Queue22 Position { 4.1  7.7  0.0  m }
+Queue22 MaxPerLine { 2 }
+Queue22 MaxRows { 3 }
+
+Queue23 Position { 4.3  15.7  0.0  m }
+Queue23 Size { 0.4  0.4  0.0  m }
+Queue23 MaxPerLine { 1 }
+Queue23 MaxRows { 3 }
+
+Queue24 Position { 4.5  15.7  0.0  m }
+Queue24 Size { 0.4  0.4  0.0  m }
+Queue24 MaxPerLine { 1 }
+Queue24 MaxRows { 3 }
+
+Queue25 Position { 4.7  15.7  0.0  m }
+Queue25 Size { 0.4  0.4  0.0  m }
+Queue25 MaxPerLine { 1 }
+Queue25 MaxRows { 3 }
+
+Queue26 Position { 1.4  15.5  0.0  m }
+Queue26 Size { 0.2  0.3  0.0  m }
+Queue26 MaxPerLine { 2 }
+Queue26 MaxRows { 3 }
+
+Queue27 Position { 1.7  15.6  0.0  m }
+Queue27 Size { 0.2  0.3  0.0  m }
+Queue27 MaxPerLine { 2 }
+Queue27 MaxRows { 3 }
+
+Queue28 Position { 1.3  13.6  0.0  m }
+Queue28 Size { 0.2  0.3  0.0  m }
+Queue28 MaxPerLine { 2 }
+Queue28 MaxRows { 3 }
+
+Queue29 Position { 2.1  13.4  0.0  m }
+Queue29 Size { 0.2  0.3  0.0  m }
+Queue29 MaxPerLine { 2 }
+Queue29 MaxRows { 3 }
+
+Queue30 Position { 1.9  14.8  0.0  m }
+Queue30 Size { 0.2  0.2  0.0  m }
+Queue30 MaxPerLine { 6 }
+Queue30 MaxRows { 5 }
+
+Queue31 Position { 1.9  17.0  0.0  m }
+Queue31 Size { 0.3  0.4  0.0  m }
+Queue31 MaxPerLine { 2 }
+Queue31 MaxRows { 3 }
+
+Queue32 Position { 0.2  9.6  0.0  m }
+Queue32 MaxPerLine { 6 }
+Queue32 MaxRows { 5 }
+
+Queue33 Position { 1.8  8.8  0.0  m }
+Queue33 MaxPerLine { 2 }
+Queue33 MaxRows { 3 }
+
+Queue34 Position { 1.5  8.1  0.0  m }
+Queue34 MaxPerLine { 2 }
+Queue34 MaxRows { 3 }
+
+Queue35 Position { 1.5  7.2  0.0  m }
+Queue35 MaxPerLine { 2 }
+Queue35 MaxRows { 3 }
+
+Queue36 Position { 2.6  15.0  0.0  m }
+Queue36 Size { 0.2  0.3  0.0  m }
+Queue36 MaxPerLine { 2 }
+Queue36 MaxRows { 3 }
+
+Queue37 Position { 4.5  9.5  0.0  m }
+Queue37 Size { 0.4  0.4  0.0  m }
+
+queue20 Position { 2.4  7.6  0.0  m }
+queue20 MaxPerLine { 2 }
+queue20 MaxRows { 3 }
+
+queue21 Position { 3.2  7.7  0.0  m }
+queue21 MaxPerLine { 2 }
+queue21 MaxRows { 3 }
+
+LencolHosp Position { 6.7  0.0  0.0  m }
+LencolHosp Alignment { 0.0  0.0  -0.5 }
+LencolHosp Size { 0.94  0.4  0.07  m }
+LencolHosp DisplayModel { Cube }
+
+Lencolhot Position { 12.1  12.0  0.0  m }
+Lencolhot Alignment { 0.0  0.0  -0.5 }
+Lencolhot Size { 0.94  0.4  0.07  m }
+Lencolhot DisplayModel { Cube }
+
+cirurgico Position { 9.9  -0.1  0.0  m }
+cirurgico Alignment { 0.0  0.0  -0.5 }
+cirurgico Size { 0.3  0.4  0.1  m }
+cirurgico DisplayModel { Pentagram }
+
+felpudos Position { 8.8  -0.1  0.0  m }
+felpudos Alignment { 0.0  0.0  -0.5 }
+felpudos Size { 1.4  0.35  0.036  m }
+felpudos DisplayModel { Circle }
+
+fronhaHosp Position { 7.7  -0.1  0.0  m }
+fronhaHosp Alignment { 0.0  0.0  -0.5 }
+fronhaHosp Size { 0.5  0.7  0.045  m }
+fronhaHosp DisplayModel { Pentagon }
+
+fronhahot Position { 12.0  11.3  0.0  m }
+fronhahot Alignment { 0.0  0.0  -0.5 }
+fronhahot Size { 0.7  0.5  0.045  m }
+fronhahot DisplayModel { Pentagon }
+
+pisorosto Position { 11.9  9.9  0.0  m }
+pisorosto Alignment { 0.0  0.0  -0.5 }
+pisorosto Size { 0.7  0.5  0.043  m }
+
+toalha Position { 11.7  10.7  0.0  m }
+toalha Alignment { 0.0  0.0  -0.5 }
+toalha Size { 1.4  0.35  0.036  m }
+toalha DisplayModel { Circle }
+
+Unpack1 Position { 3.2  15.75  0.0  m }
+Unpack1 Size { 0.3  0.3  1.0  m }
+
+Unpack2 Position { 5.6  15.6  0.0  m }
+Unpack2 Size { 0.5  0.5  1.0  m }
+
+Unpack3 Position { 2.2  16.3  0.0  m }
+Unpack3 Size { 0.5  0.6  1.0  m }
+
+Unpack4 Position { 2.8  13.2  0.0  m }
+Unpack4 Size { 0.3  0.4  1.0  m }
+
+Funcionario_area_contaminda Position { 18.0  9.8  0.0  m }
+
+funcionario_geral Position { 18.1  11.3  0.0  m }
+
+# *** ColladaModel ***
+
+Axis ColladaFile { <res>/shapes/axis_text.dae }
+
+Grid100x100 ColladaFile { <res>/shapes/grid100x100.dae }
+
+lençol-model ColladaFile { 'mais imagens/lençol.dae' }
+*** INPUT ERROR *** Entity: lençol-model, Keyword: ColladaFile - The specified file does not exist.
+File path = mais imagens/lençol.dae
+URI=file:/C:/Users/m-min/OneDrive/Documentos/Matheus/UFOP/TCC/github/jaamsim%20pronto/mais%20imagens/lençol.dae
+
+
+# *** ImageModel ***
+
+foto_colocar_jaamsim-model ImageFile { 'foto colocar jaamsim.png' }
+
+foto_colocar_jaamsim1-model ImageFile { 'foto colocar jaamsim.png' }
+
+imagem_jaamsim_atualizada-model ImageFile { 'imagem jaamsim atualizada.png' }
+
+sh_adaptacao_2d_def-model ImageFile { Template_Monografia_18_09/18_09_modelo/img/sh_adaptacao_2d_def.png }
+*** INPUT ERROR *** Entity: sh_adaptacao_2d_def-model, Keyword: ImageFile - The specified file does not exist.
+File path = Template_Monografia_18_09/18_09_modelo/img/sh_adaptacao_2d_def.png
+URI=file:/C:/Users/m-min/OneDrive/Documentos/Matheus/UFOP/TCC/github/jaamsim%20pronto/Template_Monografia_18_09/18_09_modelo/img/sh_adaptacao_2d_def.png
+
+
+# *** DisplayEntity ***
+
+DisplayEntity3 Position { 4.85  35.05  0.1  m }
+DisplayEntity3 Alignment { 0.0  0.0  -0.5 }
+DisplayEntity3 Size { 20.1  0.7  1.0  m }
+DisplayEntity3 Orientation { 0.0  0.0  180.0  deg }
+
+XY-Grid Description { 'Grid for the X-Y plane (100 m x 100 m)' }
+XY-Grid Size { 100  100  m }
+XY-Grid DisplayModel { Grid100x100 }
+XY-Grid Show { FALSE }
+XY-Grid Movable { FALSE }
+
+XYZ-Axis Description { 'Unit vectors' }
+XYZ-Axis Alignment { -0.4393409  -0.4410096  -0.4394292 }
+XYZ-Axis Size { 1.125000  1.1568242  1.1266404  m }
+XYZ-Axis DisplayModel { Axis }
+XYZ-Axis Movable { FALSE }
+
+sh_adaptacao_2d_def Position { 9.4  14.0  -1.0  m }
+sh_adaptacao_2d_def Size { 27.6  20  0.0  m }
+sh_adaptacao_2d_def Orientation { 0.0  0.0  90.0  deg }
+sh_adaptacao_2d_def DisplayModel { sh_adaptacao_2d_def-model }
+
+# *** EntityLabel ***
+
+Branch1_Label Position { 0.0  -0.65  0.0  m }
+Branch1_Label Size { 1.0  0.3  1.0  m }
+Branch1_Label RelativeEntity { Branch1 }
+Branch1_Label Show { FALSE }
+Branch1_Label TargetEntity { Branch1 }
+
+Branch3_Label Position { 0.0  -0.65  0.0  m }
+Branch3_Label Size { 1.0  0.3  1.0  m }
+Branch3_Label RelativeEntity { Branch3 }
+Branch3_Label Show { FALSE }
+Branch3_Label TargetEntity { Branch3 }
+
+Branch4_Label Position { 0.0  -0.65  0.0  m }
+Branch4_Label Size { 1.0  0.3  1.0  m }
+Branch4_Label RelativeEntity { Branch4 }
+Branch4_Label Show { FALSE }
+Branch4_Label TargetEntity { Branch4 }
+
+Branch5_Label Position { 0.0  -0.65  0.0  m }
+Branch5_Label Size { 1.0  0.3  1.0  m }
+Branch5_Label RelativeEntity { Branch5 }
+Branch5_Label Show { FALSE }
+Branch5_Label TargetEntity { Branch5 }
+
+Calandra1_Label Position { 0.0  -0.65  0.0  m }
+Calandra1_Label Size { 1.2  0.3  1.0  m }
+Calandra1_Label RelativeEntity { Calandra1 }
+Calandra1_Label Show { FALSE }
+Calandra1_Label TargetEntity { Calandra1 }
+
+DisplayEntity3_Label Position { 0.0  -0.35  0.0  m }
+DisplayEntity3_Label Size { 1.6  0.3  1.0  m }
+DisplayEntity3_Label RelativeEntity { DisplayEntity3 }
+DisplayEntity3_Label Show { FALSE }
+DisplayEntity3_Label TargetEntity { DisplayEntity3 }
+
+Empacotamento_Label Position { 0.0  -0.65  0.0  m }
+Empacotamento_Label Size { 1.8  0.3  1.0  m }
+Empacotamento_Label RelativeEntity { Empacotamento }
+Empacotamento_Label Show { FALSE }
+Empacotamento_Label TargetEntity { Empacotamento }
+
+EntityContainer1_Label Position { 0.0  -0.65  0.0  m }
+EntityContainer1_Label Size { 1.9  0.3  1.0  m }
+EntityContainer1_Label RelativeEntity { EntityContainer1 }
+EntityContainer1_Label Show { FALSE }
+EntityContainer1_Label TargetEntity { EntityContainer1 }
+
+EntityContainer2_Label Position { 0.0  -0.65  0.0  m }
+EntityContainer2_Label Size { 1.9  0.3  1.0  m }
+EntityContainer2_Label RelativeEntity { EntityContainer2 }
+EntityContainer2_Label Show { FALSE }
+EntityContainer2_Label TargetEntity { EntityContainer2 }
+
+EntityContainer3_Label Position { 0.0  -0.65  0.0  m }
+EntityContainer3_Label Size { 1.9  0.3  1.0  m }
+EntityContainer3_Label RelativeEntity { EntityContainer3 }
+EntityContainer3_Label Show { FALSE }
+EntityContainer3_Label TargetEntity { EntityContainer3 }
+
+FerroDePassar1_Label Position { 0.0  -0.65  0.0  m }
+FerroDePassar1_Label Size { 1.8  0.3  1.0  m }
+FerroDePassar1_Label RelativeEntity { FerroDePassar1 }
+FerroDePassar1_Label Show { FALSE }
+FerroDePassar1_Label TargetEntity { FerroDePassar1 }
+
+LavadoraIndustrial2_Label Position { 0.0  -0.65  0.0  m }
+LavadoraIndustrial2_Label Size { 2.2  0.3  1.0  m }
+LavadoraIndustrial2_Label RelativeEntity { LavadoraIndustrial2 }
+LavadoraIndustrial2_Label Show { FALSE }
+LavadoraIndustrial2_Label TargetEntity { LavadoraIndustrial2 }
+
+LencolHosp_Label Position { 0.0  -0.4  0.0  m }
+LencolHosp_Label Size { 1.3  0.3  1.0  m }
+LencolHosp_Label RelativeEntity { LencolHosp }
+LencolHosp_Label Show { FALSE }
+LencolHosp_Label TargetEntity { LencolHosp }
+
+Lencolhot_Label Position { 0.0  -0.4  0.0  m }
+Lencolhot_Label Size { 1.1  0.3  1.0  m }
+Lencolhot_Label RelativeEntity { Lencolhot }
+Lencolhot_Label Show { FALSE }
+Lencolhot_Label TargetEntity { Lencolhot }
+
+Pack1_Label Position { 0.0  -0.65  0.0  m }
+Pack1_Label Size { 0.8  0.3  1.0  m }
+Pack1_Label RelativeEntity { Pack1 }
+Pack1_Label Show { FALSE }
+Pack1_Label TargetEntity { Pack1 }
+
+PreDobragem_Label Position { -0.0  -0.4  0.0  m }
+PreDobragem_Label Size { 1.5  0.3  1.0  m }
+PreDobragem_Label RelativeEntity { PreDobragem }
+PreDobragem_Label Show { FALSE }
+PreDobragem_Label TargetEntity { PreDobragem }
+
+Queue13_Label Position { 0.0  -0.4  0.0  m }
+Queue13_Label Size { 1.1  0.3  1.0  m }
+Queue13_Label RelativeEntity { Queue13 }
+Queue13_Label Show { FALSE }
+Queue13_Label TargetEntity { Queue13 }
+
+Queue14_Label Position { 0.0  -0.4  0.0  m }
+Queue14_Label Size { 1.1  0.3  1.0  m }
+Queue14_Label RelativeEntity { Queue14 }
+Queue14_Label Show { FALSE }
+Queue14_Label TargetEntity { Queue14 }
+
+Queue37_Label Position { 0.0  -0.4  0.0  m }
+Queue37_Label Size { 1.1  0.3  1.0  m }
+Queue37_Label RelativeEntity { Queue37 }
+Queue37_Label Show { FALSE }
+Queue37_Label TargetEntity { Queue37 }
+
+Secadora1_Label Position { 0.0  -0.65  0.0  m }
+Secadora1_Label Size { 1.2  0.3  1.0  m }
+Secadora1_Label RelativeEntity { Secadora1 }
+Secadora1_Label Show { FALSE }
+Secadora1_Label TargetEntity { Secadora1 }
+
+Transicoes_Label Position { 0.0  -0.65  0.0  m }
+Transicoes_Label Size { 1.2  0.3  1.0  m }
+Transicoes_Label RelativeEntity { Transicoes }
+Transicoes_Label Show { FALSE }
+Transicoes_Label TargetEntity { Transicoes }
+
+Unpack1_Label Position { 0.0  -0.65  0.0  m }
+Unpack1_Label Size { 1.0  0.3  1.0  m }
+Unpack1_Label RelativeEntity { Unpack1 }
+Unpack1_Label Show { FALSE }
+Unpack1_Label TargetEntity { Unpack1 }
+
+cirurgico_Label Position { 0.0  -0.4  0.0  m }
+cirurgico_Label Size { 1.0  0.3  1.0  m }
+cirurgico_Label RelativeEntity { cirurgico }
+cirurgico_Label Show { FALSE }
+cirurgico_Label TargetEntity { cirurgico }
+
+felpudos_Label Position { 0.0  -0.4  0.0  m }
+felpudos_Label Size { 1.0  0.3  1.0  m }
+felpudos_Label RelativeEntity { felpudos }
+felpudos_Label Show { FALSE }
+felpudos_Label TargetEntity { felpudos }
+
+fronhaHosp_Label Position { 0.0  -0.4  0.0  m }
+fronhaHosp_Label Size { 1.3  0.3  1.0  m }
+fronhaHosp_Label RelativeEntity { fronhaHosp }
+fronhaHosp_Label Show { FALSE }
+fronhaHosp_Label TargetEntity { fronhaHosp }
+
+fronhahot_Label Position { 0.0  -0.35  0.0  m }
+fronhahot_Label Size { 1.1  0.3  1.0  m }
+fronhahot_Label RelativeEntity { fronhahot }
+fronhahot_Label Show { FALSE }
+fronhahot_Label TargetEntity { fronhahot }
+
+hosppacklencolpack_Label Position { 0.0  -0.65  0.0  m }
+hosppacklencolpack_Label Size { 2.2  0.3  1.0  m }
+hosppacklencolpack_Label RelativeEntity { hosppacklencolpack }
+hosppacklencolpack_Label Show { FALSE }
+hosppacklencolpack_Label TargetEntity { hosppacklencolpack }
+
+hspfropack_Label Position { 0.0  -0.65  0.0  m }
+hspfropack_Label Size { 1.3  0.3  1.0  m }
+hspfropack_Label RelativeEntity { hspfropack }
+hspfropack_Label Show { FALSE }
+hspfropack_Label TargetEntity { hspfropack }
+
+lencol_Label Position { 0.0  -0.65  0.0  m }
+lencol_Label Size { 0.7  0.3  1.0  m }
+lencol_Label RelativeEntity { lencol }
+lencol_Label Show { FALSE }
+lencol_Label TargetEntity { lencol }
+
+pisorosto_Label Position { 0.0  -0.35  0.0  m }
+pisorosto_Label Size { 1.1  0.3  1.0  m }
+pisorosto_Label RelativeEntity { pisorosto }
+pisorosto_Label Show { FALSE }
+pisorosto_Label TargetEntity { pisorosto }
+
+toalha_Label Position { 0.0  -0.35  0.0  m }
+toalha_Label Size { 0.8  0.3  1.0  m }
+toalha_Label RelativeEntity { toalha }
+toalha_Label Show { FALSE }
+toalha_Label TargetEntity { toalha }
+
+# *** OverlayClock ***
+
+Clock Description { 'Simulation date and time' }
+Clock ScreenPosition { 15  15 }
+Clock AlignBottom { TRUE }
+Clock TextHeight { 10 }
+Clock FontColour { gray20 }
+Clock FontStyle { ITALIC }
+Clock DateFormat { 'yyyy-MMM-dd HH:mm:ss.SSS' }
+
+# *** View ***
+
+View1 Description { 'Default view window' }
+View1 ViewCenter { 9.420238  8.771592  -4.229238  m }
+View1 ViewPosition { 9.420238  8.771592  26.274695  m }
+View1 WindowSize { 1146  418 }
+View1 WindowPosition { 220  102 }
+View1 ShowWindow { TRUE }
+View1 Lock2D { TRUE }
+View1 SkyboxImage { <res>/images/sky_map_2048x1024.jpg }
+
+View2 ViewCenter { 23.503253  13.654764  38.916204  m }
+View2 ViewPosition { 23.503253  13.654764  78.936024  m }
+View2 WindowSize { 1146  472 }
+View2 WindowPosition { 215  55 }
+View2 ShowWindow { FALSE }
+View2 Lock2D { TRUE }
+Validation Error - lençol-model: null
+Input Error: 3 input errors and 0 warnings found
